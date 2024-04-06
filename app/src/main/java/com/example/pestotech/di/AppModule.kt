@@ -30,7 +30,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideFirebaseReference(): DatabaseReference {
-        return provideFirebaseDatabase().getReference("task").child(provideFirebaseAuth().uid.toString())
+        return provideFirebaseDatabase().getReference("task")
     }
 
     @Provides

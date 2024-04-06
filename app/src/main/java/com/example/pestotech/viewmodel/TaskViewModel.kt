@@ -34,7 +34,7 @@ class TaskViewModel @Inject constructor(
         val uid = mAuth.uid
         id?.let {
             task.taskId = it
-            reference.child(id).setValue(task)
+            reference.child(uid!!).child(id).setValue(task)
         }
 
     }
@@ -56,17 +56,23 @@ class TaskViewModel @Inject constructor(
 
                 print(mAuth.uid.toString())
                 _task.value = NetworkResult.Loading()
+
+
                 for (i in snapshot.children) {
-                    if (snapshot.key == mAuth.uid) {
-                        i.getValue<Task>()?.let {
-                            taskList.add(Task(it.taskId, it.title, it.description, it.status))
+                    for (j in i.children) {
+                        val title = j.child("title").value.toString()
+                        val description = j.child("description").value.toString()
+                        val status = j.child("status").value.toString()
+                        if (i.key == mAuth.uid) {
+                            taskList.add(Task("", title, description, status))
+
+                        } else {
+                            continue
                         }
-                    } else {
-                        continue
                     }
+
                 }
                 _task.value = NetworkResult.Success(taskList)
-
 
             }
 
