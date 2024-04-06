@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.pestotech.views.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_updateTaskFragment"
+            app:destination="@id/updateTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTaskFragment"
+        android:name="com.example.pestotech.views.home.UpdateTaskFragment"
+        android:label="UpdateTaskFragment"
+        tools:layout="@layout/fragment_update_task">
+
+        <argument
+            android:name="task"
+            app:argType="com.example.pestotech.model.Task" />
+    </fragment>
+
+</navigation>

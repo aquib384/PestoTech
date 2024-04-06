@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">PestoTech</string>
+    <string name="create_a_task">Create a Task</string>
+    <string name="all_task">All task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="status">Status</string>
+    <string name="todo">TODO</string>
+    <string name="in_progress">In Progress</string>
+    <string name="done">Done</string>
+    <string name="add">Add</string>
+    <string name="create_task">create task</string>
+    <string name="login">Login</string>
+    <string name="not_a_member_sign_up_here">Not a member? Sign up here</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign up</string>
+    <string name="please_enter_the_details">Please enter the details</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="create_a_task_to_show">Create a task to show</string>
+    <string name="tast_title">Title: %1$s</string>
+    <string name="task_description">Description: %1$s</string>
+    <string name="task_status">Status: %1$s</string>
+    <string name="pesto_tech">Pesto Tech</string>
+    <string name="sign_out">Sign out</string>
+    <string name="help">Help</string>
+    <string name="all">All</string>
+
+</resources>

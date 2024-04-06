@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/_50dp"
+        android:layout_height="@dimen/_5dp"
+        android:layout_marginTop="@dimen/_2dp"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_50dp"
+        android:layout_marginEnd="@dimen/_16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_description"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/layout_title"
+        app:layout_constraintStart_toStartOf="@+id/layout_title"
+        app:layout_constraintTop_toBottomOf="@+id/layout_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            app:layout_constraintTop_toBottomOf="@+id/layout_title" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_status"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/spinner_shape"
+        android:drawableEnd="@drawable/baseline_arrow_drop_down_24"
+        android:hint="@string/status"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/layout_description"
+        app:layout_constraintStart_toStartOf="@+id/layout_description"
+        app:layout_constraintTop_toBottomOf="@+id/layout_description" />
+
+    <TextView
+        android:id="@+id/tv_update"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_70dp"
+        android:background="@drawable/btn_add"
+        android:gravity="center"
+        android:padding="@dimen/_15dp"
+        android:text="@string/update"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_22sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_status"
+        app:layout_constraintStart_toStartOf="@+id/tv_status"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
