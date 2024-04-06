@@ -12,24 +12,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignupViewModel @Inject constructor(
-    private val mAuth: FirebaseAuth,
-    private val reference:DatabaseReference
+    private val mAuth: FirebaseAuth, private val reference: DatabaseReference
 
-    ) : ViewModel() {
+) : ViewModel() {
 
-    var signeup = MutableLiveData<Boolean>()
+    private var signUp = MutableLiveData<Boolean>()
 
-    fun createUser(name:String, email: String, password: String) : LiveData<Boolean>{
-        mAuth
-            .createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-               signeup.value = task.isSuccessful
-                val mEmail = mAuth.currentUser?.email
-                val uid = mAuth.uid
-                reference.child("users").child(mAuth.uid.toString()).setValue(User.Users(name,mEmail,uid))
-            }
+    fun createUser(name: String, email: String, password: String): LiveData<Boolean> {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            signUp.value = task.isSuccessful
+            val mEmail = mAuth.currentUser?.email
+            val uid = mAuth.uid
+            reference.child("users").child(mAuth.uid.toString())
+                .setValue(User.Users(name, mEmail, uid))
+        }
 
-        return signeup
+        return signUp
     }
 
 

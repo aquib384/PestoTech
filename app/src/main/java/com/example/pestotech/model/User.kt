@@ -3,8 +3,8 @@ package com.example.pestotech.model
 import java.util.Date
 
 data class User(
-    val chat: Chat?=null,
-    val users: Users?=null,
+    val chat:Chat?=null,
+    val users:Users?=null,
     val email: String?=null,
     val id:String? = null,
     val message:String? = null,

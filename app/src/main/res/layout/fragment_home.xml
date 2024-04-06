@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,7 +19,7 @@
             android:layout_height="match_parent"
             android:background="@color/blue"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="@dimen/_10dp">
 
             <TextView
                 android:id="@+id/name_tv"
@@ -29,7 +28,7 @@
                 android:layout_gravity="center"
                 android:text="@string/pesto_tech"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/_18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,16 +68,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_add"
-        android:padding="@dimen/_16dp"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
         android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginTop="@dimen/_20dp"
         android:layout_marginEnd="@dimen/_20dp"
+        android:background="@drawable/btn_add"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_16dp"
         android:text="@string/create_a_task"
         android:textColor="@color/white"
         android:textSize="@dimen/_18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

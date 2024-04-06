@@ -2,7 +2,6 @@ package com.example.pestotech.views.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.pestotech.R
+import com.example.pestotech.databinding.FragmentSignupBinding
 import com.example.pestotech.utils.isValidEmail
 import com.example.pestotech.utils.isValidPasswordFormat
 import com.example.pestotech.utils.showToast
-import com.example.pestotech.views.acitvity.MainActivity
-import com.example.pestotech.databinding.FragmentSignupBinding
 import com.example.pestotech.viewmodel.SignupViewModel
+import com.example.pestotech.views.acitvity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -24,7 +24,7 @@ class SignupFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
     private val viewModel: SignupViewModel by viewModels()
-    lateinit var navController: NavController
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -55,18 +55,13 @@ class SignupFragment : Fragment() {
             viewModel.createUser(name, email, password).observe(viewLifecycleOwner) {
 
                 if (it) {
-                    Log.d("TAG", it.toString())
-
                     openMainScreen()
-
-
                 } else {
-                    Log.d("TAG", it.toString())
                     context?.showToast(it.toString())
                 }
             }
         } else {
-            context?.showToast("Please enter correct details")
+            context?.showToast(getString(R.string.please_enter_correct_details))
         }
 
     }

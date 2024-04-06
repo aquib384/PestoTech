@@ -56,11 +56,11 @@
         android:id="@+id/tv_status"
         android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_10dp"
         android:background="@drawable/spinner_shape"
         android:drawableEnd="@drawable/baseline_arrow_drop_down_24"
         android:hint="@string/status"
-        android:padding="20dp"
+        android:padding="@dimen/_20dp"
         app:layout_constraintEnd_toEndOf="@+id/layout_description"
         app:layout_constraintStart_toStartOf="@+id/layout_description"
         app:layout_constraintTop_toBottomOf="@+id/layout_description" />

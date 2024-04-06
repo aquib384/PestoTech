@@ -3,7 +3,6 @@ package com.example.pestotech.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
@@ -14,12 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pestotech.R
 import com.example.pestotech.callbacks.ItemClickListener
-import com.example.pestotech.databinding.ItemTaskBinding
+import com.example.pestotech.databinding.LayoutTaskItemBinding
 import com.example.pestotech.model.Task
-import com.example.pestotech.utils.Constants
-import com.google.firebase.auth.FirebaseAuth
 import java.util.Locale
-import javax.inject.Inject
 
 /**
  * Author: Aquib khan (khanaquib384@gmail.com)
@@ -37,7 +33,7 @@ class MainAdapter(
         parent: ViewGroup, viewType: Int
     ): MainAdapter.ViewHolder {
         return ViewHolder(
-            ItemTaskBinding.inflate(
+            LayoutTaskItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -59,30 +55,30 @@ class MainAdapter(
 
 
     inner class ViewHolder(
-        private val binding: ItemTaskBinding
+        private val binding: LayoutTaskItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Task) {
 
             binding.apply {
-                    tvTitle.text = context.getString(R.string.tast_title, data.title)
-                    tvDescription.text = context.getString(R.string.task_description, data.description)
-                    tvStatus.text = context.getString(R.string.task_status, data.status)
-                    val status = data.status
-                    val image = if (status.equals(context.getString(R.string.todo), true)) {
-                        ContextCompat.getDrawable(context, R.drawable.todo)
-                    } else if (status.equals(context.getString(R.string.in_progress), true)) {
-                        ContextCompat.getDrawable(context, R.drawable.progress)
-                    } else {
-                        ContextCompat.getDrawable(context, R.drawable.done)
-                    }
-                    Glide.with(context).load(image).into(imageView)
+                tvTitle.text = context.getString(R.string.tast_title, data.title)
+                tvDescription.text = context.getString(R.string.task_description, data.description)
+                tvStatus.text = context.getString(R.string.task_status, data.status)
+                val status = data.status
+                val image = if (status.equals(context.getString(R.string.todo), true)) {
+                    ContextCompat.getDrawable(context, R.drawable.todo)
+                } else if (status.equals(context.getString(R.string.in_progress), true)) {
+                    ContextCompat.getDrawable(context, R.drawable.progress)
+                } else {
+                    ContextCompat.getDrawable(context, R.drawable.done)
+                }
+                Glide.with(context).load(image).into(imageView)
 
-                    root.setOnClickListener {
+                root.setOnClickListener {
 
-                        callback.onRecyclerItemClicked(adapterPosition, it, data)
+                    callback.onRecyclerItemClicked(adapterPosition, it, data)
 
-                    }
+                }
 
             }
 

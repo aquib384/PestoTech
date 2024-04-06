@@ -2,7 +2,6 @@ package com.example.pestotech.views.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.pestotech.R
+import com.example.pestotech.databinding.FragmentLoginBinding
 import com.example.pestotech.utils.isValidEmail
 import com.example.pestotech.utils.isValidPasswordFormat
 import com.example.pestotech.utils.showToast
-import com.example.pestotech.views.acitvity.MainActivity
-import com.example.pestotech.databinding.FragmentLoginBinding
 import com.example.pestotech.viewmodel.LoginViewModel
+import com.example.pestotech.views.acitvity.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -27,13 +27,12 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var navController: NavController
     private val viewModel: LoginViewModel by viewModels()
+
     @Inject
     lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         navController = findNavController()
@@ -64,23 +63,20 @@ class LoginFragment : Fragment() {
         if (isValidEmail(email) && isValidPasswordFormat(password)) {
             viewModel.isLogin(email, password).observe(viewLifecycleOwner) {
                 if (it) {
-                    Log.d("TAG", it.toString())
-
                     openMainScreen()
 
                 } else {
-                    Log.d("TAG", it.toString())
                     context?.showToast(it.toString())
                 }
             }
         } else {
-            context?.showToast("Please enter details")
+            context?.showToast(getString(R.string.please_enter_details))
         }
 
 
     }
 
-    private fun openMainScreen(){
+    private fun openMainScreen() {
         val intent = Intent(activity, MainActivity::class.java)
         startActivity(intent)
         activity?.finish()

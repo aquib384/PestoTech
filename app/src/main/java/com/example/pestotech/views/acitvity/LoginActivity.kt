@@ -16,6 +16,7 @@ import javax.inject.Inject
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var navController: NavController
+
     @Inject
     lateinit var mAuth: FirebaseAuth
 
@@ -23,13 +24,17 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getUser()
+        navController = findNavController(R.id.nav_host_fragment_activity_login)
+
+    }
+
+    private fun getUser() {
         val user = mAuth.currentUser
         user?.let {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
-        navController = findNavController(R.id.nav_host_fragment_activity_login)
-
     }
 }

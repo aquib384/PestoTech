@@ -38,6 +38,7 @@ class HomeFragment : Fragment(), ItemClickListener<Task> {
 
     @Inject
     lateinit var mAuth: FirebaseAuth
+
     @Inject
     lateinit var firebaseDatabase: FirebaseDatabase
 
@@ -77,10 +78,9 @@ class HomeFragment : Fragment(), ItemClickListener<Task> {
     }
 
 
-
     private fun initAdapter() {
 
-        taskAdapter = MainAdapter(requireContext(),this)
+        taskAdapter = MainAdapter(requireContext(), this)
         val layoutManager =
             LinearLayoutManagerWrapper(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.taskRv.layoutManager = layoutManager
@@ -102,15 +102,14 @@ class HomeFragment : Fragment(), ItemClickListener<Task> {
                         progressDialog.hide()
                         taskList.clear()
                         taskList = result.data as MutableList<Task>
-                        if (taskList.isEmpty()){
+                        if (taskList.isEmpty()) {
                             initAdapter()
                             binding.apply {
                                 taskRv.visibility = View.GONE
                                 listTaskTv.visibility = View.GONE
                                 tvCreateTask.visibility = View.VISIBLE
                             }
-                        }
-                        else {
+                        } else {
                             binding.apply {
                                 taskRv.visibility = View.VISIBLE
                                 listTaskTv.visibility = View.VISIBLE
@@ -133,7 +132,7 @@ class HomeFragment : Fragment(), ItemClickListener<Task> {
         }
     }
 
-    private fun mainMenu(){
+    private fun mainMenu() {
         val popupMenu = PopupMenu(requireContext(), binding.ivMenu)
         popupMenu.menuInflater.inflate(R.menu.main_menu, popupMenu.menu)
         popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -153,11 +152,11 @@ class HomeFragment : Fragment(), ItemClickListener<Task> {
         popupMenu.show()
     }
 
-    private fun filterMenu(){
+    private fun filterMenu() {
         val popupMenu = PopupMenu(requireContext(), binding.ivMenu)
         popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
         popupMenu.setOnMenuItemClickListener { menuItem ->
-             taskAdapter.filter.filter(menuItem.title)
+            taskAdapter.filter.filter(menuItem.title)
 
             true
         }

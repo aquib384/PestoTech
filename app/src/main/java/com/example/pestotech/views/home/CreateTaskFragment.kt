@@ -10,13 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.PopupMenu
-import androidx.fragment.app.activityViewModels
 import com.example.pestotech.R
 import com.example.pestotech.callbacks.TaskItemListener
 import com.example.pestotech.databinding.FragmentCreateTaskBinding
 import com.example.pestotech.model.Task
 import com.example.pestotech.utils.showToast
-import com.example.pestotech.viewmodel.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
